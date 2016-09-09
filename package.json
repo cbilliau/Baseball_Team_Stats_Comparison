@@ -1,0 +1,27 @@
+{
+  "name": "ngbaseball-stats",
+  "version": "1.0.0",
+  "description": "This app allows a user to compare the current year statistics between one National League and one American League team.",
+  "main": "index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbilliau/Baseball_Team_Stats_Comparison.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbilliau/Baseball_Team_Stats_Comparison/issues"
+  },
+  "homepage": "https://github.com/cbilliau/Baseball_Team_Stats_Comparison#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.5.1",
+    "karma": "^1.2.0",
+    "karma-jasmine": "^1.0.2"
+  }
+}

@@ -8,6 +8,9 @@ This app allows a user to compare the current year statistics between one Nation
 2. Mechanism for choosing which statistics to display.
 3. If additional info (news, links, etc...) should/will be displayed for each team.
 
+...
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -42,20 +45,6 @@ End with an example of getting some data out of the system or using it for a lit
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
 ```
 
 ## Deployment
@@ -69,20 +58,12 @@ Add additional notes about how to deploy this on a live system
 * Atom - ergaerga
 
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **name***
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* https://erikberg.com/api
 * Inspiration
 * etc

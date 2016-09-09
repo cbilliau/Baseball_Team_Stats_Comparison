@@ -1,0 +1,23 @@
+{
+  "name": "ngbaseball-stats",
+  "description": "This app allows a user to compare the current year statistics between one National League and one American League team.",
+  "main": "index.html",
+  "authors": [
+    "cbilliau <christopher@billiau.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cbilliau/Baseball_Team_Stats_Comparison",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.1.1",
+    "angular-route": "^1.5.8",
+    "angular-material-icons": "^0.7.1"
+  }
+}
