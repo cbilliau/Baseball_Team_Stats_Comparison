@@ -1,0 +1,28 @@
+md-sidenav {
+  background-color: lightblue;
+}
+
+#teamList {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+#title {
+  background-color: grey;
+}
+
+#ALside {
+  background-color: teal;
+}
+
+#NLside {
+  background-color: tan;
+}
+
+#AL {
+  background-color: lightgreen;
+}
+
+#NL {
+  background-color: lightpink;
+}
