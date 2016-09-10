@@ -1,4 +1,6 @@
-angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
+'use strict'
+
+angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons', 'teamComparison'])
     .config(function ($mdIconProvider, $mdThemingProvider) {
     // define the icon names for shortcuts and icon locations
     // $mdIconProvider
