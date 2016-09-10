@@ -28,7 +28,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 .directive('mainContent', function(standings) {
     return {
         restrict: 'A',
-        templateUrl: './src/views/teamComparison-template.html',
+        templateUrl: './src/views/mainContent-template.html',
         controller: function controller($scope, $element, $attrs) {
 
             // Call factory
@@ -38,4 +38,19 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             });
         }
     }
-});
+})
+
+.directive('sideBar', function(standings) {
+  return {
+      restrict: 'A',
+      templateUrl: './src/views/sideBar-template.html',
+      controller: function controller($scope, $element, $attrs) {
+
+          // Call factory
+          standings().success(function(results) {
+              $scope.standingsData = results;
+              console.log($scope.standingsData);
+          });
+      }
+  }
+})

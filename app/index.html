@@ -8,7 +8,7 @@
 
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
         <link rel="stylesheet" href="./bower_components/angular-material/angular-material.min.css"/>
-        <link rel="stylesheet" href="./bower_components/angular-material-icons/angular-material-icons.css" />
+        <link rel="stylesheet" href="./bower_components/angular-material-icons/angular-material-icons.css"/>
         <link rel="stylesheet" href="./assets/app.css"/>
 
         <style type="text/css">
@@ -20,26 +20,16 @@
             [x-ng-cloak] {
                 display: none !important;
             }
+
         </style>
     </head>
-    <body layout="row" ng-cloak >
+    <body layout="row" ng-cloak>
 
-      <md-sidenav id="teamList" class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed md-locked-open" md-is-locked-open="true" flex="20">
-        <section id="title" flex>
-          <h1>MLB Team Stats Compare</h1>
-        </section>
-        <section id="ALside" flex>AL area</section>
-        <section id="NLside" flex>AL area</section>
-      </md-sidenav>
+        <!-- Side Navigation Bar -->
+        <div side-bar flex="20"></div>
 
-      <div class="layout-column flex">
-        <md-toolbar>
-
-        </md-toolbar>
-        <div main-content class="layout-row flex" layout="row">
-        </div>
-
-      </div>
+        <!-- Main Content Area and Title Bar -->
+        <div main-content class="layout-column flex"></div>
 
         <script src="./bower_components/angular/angular.js"></script>
         <script src="./bower_components/angular-animate/angular-animate.js"></script>
@@ -48,8 +38,5 @@
         <script src="./bower_components/angular-material-icons/angular-material-icons.js"></script>
 
         <script src="./src/app.js"></script>
-
-
     </body>
-
 </html>
