@@ -3,7 +3,7 @@
 angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
     .config(function($mdIconProvider, $mdThemingProvider, $httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
+        // $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // define the icon names for shortcuts and icon locations
         // $mdIconProvider
@@ -29,12 +29,11 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
           }
       })
 
-      .directive('mainContent', function (appService, $mdSidenav, $mdToast, $mdDialog, $mdMedia, $mdBottomSheet) {
+      .directive('mainContent', function (appService) {
         return {
           restrict: 'A',
           templateUrl: './src/views/teamComparison-template.html',
           controller: function controller($scope, $element, $attrs) {
-            console.log($attrs);
             this.appService = appService;
             this.data = this.appService.getStats()
             console.log(this.data);
