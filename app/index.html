@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body layout="row" ng-cloak>
+    <body layout="row" ng-cloak ng-controller="mainController as vm">
 
       <md-sidenav id="teamList" class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed md-locked-open" md-is-locked-open="true" flex="20">
         <section id="title" flex>
@@ -50,6 +50,7 @@
         <script src="./bower_components/angular-material/angular-material.min.js"></script>
         <script src="./bower_components/angular-material-icons/angular-material-icons.js"></script>
 
+        <script src="./src/controllers/mainController.js"></script>
         <script src="./src/app.js"></script>
 
 
