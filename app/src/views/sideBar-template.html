@@ -1,5 +1,15 @@
-<md-sidenav id="teamList" class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed md-locked-open" md-is-locked-open="true" >
-    <section id="title" flex><h1>MLB Team Stats Compare</h1></section>
-    <section id="ALside" flex>AL area</section>
+<!--sideBar template -->
+
+<md-sidenav id="teamList" class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed md-locked-open" md-is-locked-open="true">
+    <section id="title" flex>
+        <h1>MLB Team Stats Compare</h1>
+    </section>
+    <md-content id="ALside" flex>
+        <md-virtual-repeat-container id="vertical-container">
+            <div md-virtual-repeat="item in dynamicItems" md-on-demand class="repeated-item" flex>
+                {{item}}
+            </div>
+        </md-virtual-repeat-container>
+    </md-content>
     <section id="NLside" flex>AL area</section>
 </md-sidenav>
