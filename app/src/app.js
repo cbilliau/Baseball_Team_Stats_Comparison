@@ -33,19 +33,19 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     }
 })
 
-.factory('generateStandings', function() {
+.factory('generateStats', function() {
 
     // Define objects that will hold teams
-    var alStandings = {
+    var alTeamStats = {
         teams: []
     };
-    var nlStandings = {
+    var nlTeamStats = {
         teams: []
     };
 
     return {
 
-        // Push data into standings
+        // Push data into team stats objects
         pushToObject: function(obj, team, team_stats, conf) {
 
             obj.teams.push({
@@ -69,8 +69,8 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             })
         },
 
-        // Generate national league and american league standing objects
-        generate: function(data) {
+        // Iterate of api data
+        iterateLeagueData: function(data) {
 
             var alConfernceId = data.divisions[0].conference_id;
             var nlConferenceId = data.divisions[1].conference_id;
@@ -90,21 +90,21 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                     data.teams[i].division_id === alCentralDivisionId
                 ) {
                     var conference = 'American League';
-                    this.pushToObject(alStandings, data.teams[i], data.team_season_stats[i], conference);
+                    this.pushToObject(alTeamStats, data.teams[i], data.team_season_stats[i], conference);
 
                 } else {
                     var conference = 'National League';
-                    this.pushToObject(nlStandings, data.teams[i], data.team_season_stats[i], conference);
+                    this.pushToObject(nlTeamStats, data.teams[i], data.team_season_stats[i], conference);
                 }
             }
 
-            // Return objects containing teams and their stats 
-            return [alStandings, nlStandings];
+            // Return objects containing teams and their stats
+            return [alTeamStats, nlTeamStats];
         }
     }
 })
 
-.directive('mainContent', function(callAPI, generateStandings) {
+.directive('mainContent', function(callAPI, generateStats) {
     return {
         restrict: 'A',
         templateUrl: './src/views/mainContent-template.html',
@@ -114,7 +114,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             // Call API factory
             callAPI().success(function(results) {
                 console.log(results);
-                $scope.standings = generateStandings.generate(results);
+                $scope.standings = generateStats.iterateLeagueData(results);
                 console.log($scope.standings);
             });
         }
