@@ -14,3 +14,11 @@ describe('callAPI', function() {
             $httpBackend.verifyNoOutstandingRequest();
         }));
 });
+
+xdescribe('generateStats.pushToObject', function() {
+    beforeEach(module('baseballStatsApp'));
+
+    it('should push an object into an array', inject(function(generateStats.pushToObject) {
+
+    }))
+  });
