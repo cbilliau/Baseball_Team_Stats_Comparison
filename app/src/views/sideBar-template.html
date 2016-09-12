@@ -1,15 +1,18 @@
 <!--sideBar template -->
 
-<md-sidenav id="teamList" class="site-sidenav md-sidenav-left md-whiteframe-z2 hide-print md-closed md-locked-open" md-is-locked-open="true">
-    <section id="title" flex>
-        <h1>MLB Team Stats Compare</h1>
-    </section>
+<md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-sm')"
+        md-whiteframe="4">
+
+    <md-toolbar>
+        <h1>Teams</h1>
+    </md-toolbar>
+
     <md-content id="ALside" flex>
-        <md-virtual-repeat-container id="vertical-container">
-            <div md-virtual-repeat="item in dynamicItems" md-on-demand class="repeated-item" flex>
-                {{item}}
-            </div>
-        </md-virtual-repeat-container>
+      <md-list>Nl Area</md-list>
     </md-content>
-    <section id="NLside" flex>AL area</section>
+    
+    <md-content id="NLside" flex>AL area</md-content>
 </md-sidenav>
