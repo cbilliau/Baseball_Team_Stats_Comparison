@@ -57,7 +57,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 doubles: team_stats.doubles,
                 triples: team_stats.triples,
                 rbis: team_stats.rbi,
-                erz: team_stats.era,
+                era: team_stats.era,
                 runs_allowed: team_stats.runs_allowed,
                 double_plays: team_stats.double_plays,
                 triple_plays: team_stats.triple_plays,
@@ -84,10 +84,10 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                     data.teams[i].division_id === alWestDivisionId ||
                     data.teams[i].division_id === alCentralDivisionId
                 ) {
-                    var conference = 'American League';
+                    // American League Push
                     this.pushToObject(alData, data.teams[i], data.team_season_stats[i]);
                 } else {
-                    var conference = 'National League';
+                    // National League Push
                     this.pushToObject(nlData, data.teams[i], data.team_season_stats[i]);
                 }
             }
@@ -101,7 +101,6 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 .service('statNameService', function() {
 
       var statNames = [
-          'Team',
           'Wins',
           'Losses',
           'Balls',
@@ -217,20 +216,20 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
         }
     }
-})
+});
 
-.directive('bottomSheet', function() {
-    return {
-        require: '^appContainer',
-        restrict: 'A',
-        link: function(scope, element, attrs, appContainerCtrl) {
-            appContainerCtrl.addBottomSheet();
-        },
-        controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
-
-        var vm = this;
-
-        $scope.items = [1,2,3,4];
-        }
-    }
-})
+// .directive('bottomSheet', function() {
+//     return {
+//         require: '^appContainer',
+//         restrict: 'A',
+//         link: function(scope, element, attrs, appContainerCtrl) {
+//             appContainerCtrl.addBottomSheet();
+//         },
+//         controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
+//
+//         var vm = this;
+//         console.log(vm.statNames);
+//
+//         }
+//     }
+// })

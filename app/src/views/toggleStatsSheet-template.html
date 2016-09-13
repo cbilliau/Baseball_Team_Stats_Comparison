@@ -1,25 +1,20 @@
 <md-bottom-sheet>
-  <md-subheader>
-    Choose Stats to Display
-  </md-subheader>
+    <md-subheader>
+        Choose Stats to Display
+    </md-subheader>
 
-  <div flex="100" flex-gt-sm="50" layout="column">
+    <div flex="100" flex-gt-sm="15" layout="column">
         <div>
-          <!--
-            In IE, we cannot apply flex directly to <fieldset>
-            @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
-          -->
-          <fieldset class="standard" >
-            <legend></legend>
-            <div layout="row" layout-wrap flex>
-              <div flex="50" ng-repeat="item in items">
-                <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                  {{ item }} <span ng-if="exists(item, selected)">selected</span>
-                </md-checkbox>
-              </div>
-            </div>
-          </fieldset>
+            <fieldset class="standard">
+                <div layout="row" layout-wrap flex>
+                    <div flex="100" ng-repeat="item in vm.statNames">
+                        <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                            {{ item }}
+                        </md-checkbox>
+                    </div>
+                </div>
+            </fieldset>
         </div>
-      </div>
+    </div>
 
 </md-bottom-sheet>
