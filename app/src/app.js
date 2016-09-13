@@ -107,22 +107,29 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     return {
         replace: false,
         restrict: 'E',
+        controllerAs: 'vm',
         controller: function($scope, $element, $attrs) {
-            $scope.content = [];
 
-            this.addMainContent = function() {
+            $scope.content = [];
+            var vm = this;
+            vm.dataTeams = [];
+            vm.nlTeamStats = [];
+            vm.alTeamStats = [];
+
+            vm.getSetData = callAPI().success(function(results) {
+                vm.dataTeams = generateStats.iterateLeagueData(results);
+                vm.alTeamStats = vm.dataTeams[0].teams;
+                vm.nlTeamStats = vm.dataTeams[1].teams;
+            });
+
+            vm.addMainContent = function() {
                 $scope.content.push('mainContent');
             };
 
-            this.addSideBar = function() {
+            vm.addSideBar = function() {
                 $scope.content.push('sideBar');
             };
-            callAPI().success(function(results) {
-                var teamStats;
-                teamStats = generateStats.iterateLeagueData(results);
-                console.log(results);
-                console.log(teamStats);
-            });
+
         }
     }
 })

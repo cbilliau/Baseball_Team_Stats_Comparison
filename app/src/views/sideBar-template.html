@@ -11,9 +11,9 @@
 
     <md-content id="nl" layout-padding >
       <md-list>
-        <md-list-item ng-repeat="team in nlTeamStats">
+        <md-list-item ng-repeat="team in vm.nlTeamStats">
           <md-button ng-click="selectTeam(team)"
-                     ng-class="{ 'selected': user === selected }">
+                     ng-class="{ 'selected': team === selected }">
           <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
           {{ team.name }}
           </md-button>
@@ -21,7 +21,13 @@
     </md-content>
 
     <md-content id="al" layout-padding >
-      <p>Ad quis fugiat ut nostrud qui consectetur ipsum aliquip sunt mollit nulla cillum eiusmod ut minim et. Est Lorem aliqua in tempor aute irure officia nulla dolore esse aute Lorem. Minim duis eiusmod pariatur aute qui aute in voluptate est non commodo excepteur proident aliqua nulla.</p>
-      <p>Sint adipisicing ut eu tempor labore eiusmod aliqua. Laboris ullamco consequat laborum veniam laborum esse enim aliqua sunt laborum sit fugiat sint ipsum enim tempor qui. Officia aute do magna reprehenderit occaecat commodo nulla magna consequat proident non mollit cupidatat in ea est ullamco. Sunt eu veniam ipsum ad amet voluptate duis voluptate mollit officia cupidatat sunt. Officia voluptate Lorem nostrud officia eiusmod consectetur elit aliqua elit duis. Pariatur qui proident commodo Lorem eiusmod minim aliquip ex dolore esse occaecat culpa.</p>
+      <md-list>
+        <md-list-item ng-repeat="team in vm.alTeamStats">
+          <md-button ng-click="selectTeam(team)"
+                     ng-class="{ 'selected': team === selected }">
+          <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
+          {{ team.name }}
+          </md-button>
+      </md-list>
     </md-content>
 </md-sidenav>
