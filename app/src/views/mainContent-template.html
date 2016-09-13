@@ -1,13 +1,18 @@
-<!-- Main content -->
-
-<md-toolbar class="md-hue-2">
-  <md-button hide-gt-sm ng-click="toggleSideNav()" class="md-icon-button">
-    <!-- use .config in boot.ts to define menu -->
-    <md-icon md-svg-icon="menu"></md-icon>
-  </md-button>
-  <h1>MLB Team Stats Comparison</h1>
+<md-toolbar class="md-hue-2" class="layout-column flex">
+    <md-button hide-gt-sm ng-click="toggleSideNav()" class="md-icon-button">
+        <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <h1>MLB Team Stats Comparison</h1>
 </md-toolbar>
+
 <div class="layout-row flex" layout="row">
-    <md-content id="AL" flex>content</md-content>
-    <md-content id="NL" flex>content</md-content>
+
+    <md-content class="scrollable-nav-content" flex>
+
+      content
+    </md-content>
+
+    <md-content flex>
+      content
+    </md-content>
 </div>

@@ -16,7 +16,15 @@ md-sidenav  md-list {
   padding: 0px 0px 8px 0px;
 }
 
+
 #teamList {
   box-sizing: border-box;
   height: 100%;
+}
+
+#nl {
+  background-color: orange;
+}
+#al {
+  background-color: lightgreen;
 }

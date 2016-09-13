@@ -23,13 +23,20 @@
 
         </style>
     </head>
-    <body layout="row" ng-cloak>
+    <body  ng-cloak>
 
-        <!-- Side Navigation Bar -->
-        <div side-bar layout="vertical"></div>
+        <!-- Parent directive element container -->
+        <app-container layout="row">
 
-        <!-- Main Content Area and Title Bar -->
-        <div main-content class="layout-column flex"></div>
+            <!-- child directive attribute container -->
+            <!-- Side Navigation Bar -->
+            <div side-bar layout="vertical"></div>
+
+            <!-- child directive attribute container -->
+            <!-- Main Content Area and Title Bar -->
+            <div main-content class="layout-column flex" flex></div>
+
+        </app-screen>
 
         <!-- bower components -->
         <script src="./bower_components/angular/angular.js"></script>
