@@ -12,7 +12,7 @@
             <md-list-item ng-repeat="team in vm.nlTeamStats">
                 <md-button ng-click="selectNlTeam(team)" ng-class="{ 'selected': team === selected }">
                     <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
-                    {{ team.name + ' ' + team.nickName }}
+                    {{ team.city }}
                 </md-button>
             </md-list>
         </md-content>
@@ -24,7 +24,7 @@
                 <md-list-item ng-repeat="team in vm.alTeamStats">
                     <md-button ng-click="selectAlTeam(team)" ng-class="{ 'selected': team === selected }">
                         <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
-                        {{ team.name + ' ' + team.nickName }}
+                        {{ team.city }}
                     </md-button>
                 </md-list>
             </md-content>

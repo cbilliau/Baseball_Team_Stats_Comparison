@@ -43,12 +43,11 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     return {
 
         // Push data into team stats objects
-        pushToObject: function(obj, team, team_stats, conf) {
+        pushToObject: function(obj, team, team_stats) {
 
             obj.teams.push({
-                name: team.name,
-                nickName: team.nickname,
-                colors: team.colors,
+                city: team.name,
+                team: team.nickname,
                 wins: team_stats.wins,
                 losses: team_stats.losses,
                 balls: team_stats.balls,
@@ -58,11 +57,10 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 doubles: team_stats.doubles,
                 triples: team_stats.triples,
                 rbis: team_stats.rbi,
-                era: team_stats.era,
+                erz: team_stats.era,
                 runs_allowed: team_stats.runs_allowed,
                 double_plays: team_stats.double_plays,
                 triple_plays: team_stats.triple_plays,
-                division_id: team.division_id
             })
         },
 
@@ -87,10 +85,10 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                     data.teams[i].division_id === alCentralDivisionId
                 ) {
                     var conference = 'American League';
-                    this.pushToObject(alData, data.teams[i], data.team_season_stats[i], conference);
+                    this.pushToObject(alData, data.teams[i], data.team_season_stats[i]);
                 } else {
                     var conference = 'National League';
-                    this.pushToObject(nlData, data.teams[i], data.team_season_stats[i], conference);
+                    this.pushToObject(nlData, data.teams[i], data.team_season_stats[i]);
                 }
             }
 
@@ -100,24 +98,48 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     }
 })
 
-.directive('appContainer', function(callAPI, generateStats) {
+.service('statNameService', function() {
+
+      var statNames = [
+          'Team',
+          'Wins',
+          'Losses',
+          'Balls',
+          'Hits',
+          'Runs',
+          'Singles',
+          'Doubles',
+          'Triples',
+          'RBI',
+          'ERA',
+          'Runs Allowed',
+          'Double Plays',
+          'Triple Plays'
+      ]
+
+      return {
+        getStatNames : function() {
+          return statNames;
+        }
+      }
+})
+
+.directive('appContainer', function(callAPI, generateStats, statNameService) {
     return {
         replace: false,
         restrict: 'E',
         controllerAs: 'vm',
-        controller: function($scope, $element, $attrs, $mdSidenav) {
-
-            $scope.content = [];
+        controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
 
             var vm = this;
 
+            $scope.content = [];
+            vm.statNames = statNameService.getStatNames();
             vm.dataTeams = [];
             vm.nlTeamStats = [];
             vm.alTeamStats = [];
             vm.selectedAL = null;
             vm.selectedNl = null;
-
-            console.log(this.selectedNL);
 
             vm.getSetData = callAPI().success(function(results) {
                 vm.dataTeams = generateStats.iterateLeagueData(results);
@@ -126,30 +148,31 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             });
 
             $scope.selectNlTeam = function(team) {
-              vm.selectedNl = team;
-              console.log(vm.selectedNl);
-              var sidenav = $mdSidenav('left');
-              if (sidenav.isOpen());
-                  sidenav.close();
+                vm.selectedNl = team;
+                var sidenav = $mdSidenav('left');
+                if (sidenav.isOpen());
+                sidenav.close();
             };
 
             $scope.selectAlTeam = function(team) {
-              vm.selectedAl = team;
-              console.log(vm.selectedAl);
-              var sidenav = $mdSidenav('left');
-              if (sidenav.isOpen());
-                  sidenav.close();
+                vm.selectedAl = team;
+                var sidenav = $mdSidenav('left');
+                // if (sidenav.isOpen());
+                sidenav.close();
             };
 
+            $scope.showToggleStatsSheet = function($event) {
+                $mdBottomSheet.show({
+                    parent: angular.element(document.getElementById('wrapper')),
+                    templateUrl: './src/views/toggleStatsSheet-template.html',
+                    targetEvent: $event
+                }).then(function(checkbox) {
+                    console.log(checkbox.name + ' clicked!')
+                });
+            }
 
 
-
-
-
-
-
-
-
+            // Bind child directives
             vm.addMainContent = function() {
                 $scope.content.push('mainContent');
             };
@@ -158,6 +181,9 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 $scope.content.push('sideBar');
             };
 
+            vm.addBottomSheet = function() {
+                $scope.content.push('bottomSheet');
+            };
         }
     }
 })
@@ -191,4 +217,20 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
         }
     }
-});
+})
+
+.directive('bottomSheet', function() {
+    return {
+        require: '^appContainer',
+        restrict: 'A',
+        link: function(scope, element, attrs, appContainerCtrl) {
+            appContainerCtrl.addBottomSheet();
+        },
+        controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
+
+        var vm = this;
+
+        $scope.items = [1,2,3,4];
+        }
+    }
+})
