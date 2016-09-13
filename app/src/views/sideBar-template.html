@@ -1,33 +1,32 @@
-<md-sidenav
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
 
-        class="md-sidenav-left"
-        md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-sm')"
-        md-whiteframe="4">
-
-    <md-toolbar layout-padding >
+    <!-- TOol bar-->
+    <md-toolbar layout-padding>
         <h1>Teams</h1>
     </md-toolbar>
 
-    <md-content id="nl" layout-padding >
-      <md-list>
-        <md-list-item ng-repeat="team in vm.nlTeamStats">
-          <md-button ng-click="selectTeam(team)"
-                     ng-class="{ 'selected': team === selected }">
-          <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
-          {{ team.name }}
-          </md-button>
-      </md-list>
-    </md-content>
+    <!-- Top section -->
+    <md-content md-whiteframe="4" layout-padding>
+      <h3>National League</h3>
+        <md-list>
+            <md-list-item ng-repeat="team in vm.nlTeamStats">
+                <md-button ng-click="selectNlTeam(team)" ng-class="{ 'selected': team === selected }">
+                    <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
+                    {{ team.name + ' ' + team.nickName }}
+                </md-button>
+            </md-list>
+        </md-content>
 
-    <md-content id="al" layout-padding >
-      <md-list>
-        <md-list-item ng-repeat="team in vm.alTeamStats">
-          <md-button ng-click="selectTeam(team)"
-                     ng-class="{ 'selected': team === selected }">
-          <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
-          {{ team.name }}
-          </md-button>
-      </md-list>
-    </md-content>
-</md-sidenav>
+        <!-- Bottom section -->
+        <md-content md-whiteframe="4" layout-padding>
+          <h3>American League</h3>
+            <md-list>
+                <md-list-item ng-repeat="team in vm.alTeamStats">
+                    <md-button ng-click="selectAlTeam(team)" ng-class="{ 'selected': team === selected }">
+                        <md-icon md-svg-icon="{{ team.icon }}" class"avatar"></md-icon>
+                        {{ team.name + ' ' + team.nickName }}
+                    </md-button>
+                </md-list>
+            </md-content>
+
+        </md-sidenav>

@@ -15,9 +15,6 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         .accentPalette('red');
 })
 
-// Placeholder for controller if needed
-.controller('mainController', function(mainContent, sideBar) {})
-
 .factory('callAPI', function($http) {
     return function() {
         return $http({
@@ -108,19 +105,50 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         replace: false,
         restrict: 'E',
         controllerAs: 'vm',
-        controller: function($scope, $element, $attrs) {
+        controller: function($scope, $element, $attrs, $mdSidenav) {
 
             $scope.content = [];
+
             var vm = this;
+
             vm.dataTeams = [];
             vm.nlTeamStats = [];
             vm.alTeamStats = [];
+            vm.selectedAL = null;
+            vm.selectedNl = null;
+
+            console.log(this.selectedNL);
 
             vm.getSetData = callAPI().success(function(results) {
                 vm.dataTeams = generateStats.iterateLeagueData(results);
                 vm.alTeamStats = vm.dataTeams[0].teams;
                 vm.nlTeamStats = vm.dataTeams[1].teams;
             });
+
+            $scope.selectNlTeam = function(team) {
+              vm.selectedNl = team;
+              console.log(vm.selectedNl);
+              var sidenav = $mdSidenav('left');
+              if (sidenav.isOpen());
+                  sidenav.close();
+            };
+
+            $scope.selectAlTeam = function(team) {
+              vm.selectedAl = team;
+              console.log(vm.selectedAl);
+              var sidenav = $mdSidenav('left');
+              if (sidenav.isOpen());
+                  sidenav.close();
+            };
+
+
+
+
+
+
+
+
+
 
             vm.addMainContent = function() {
                 $scope.content.push('mainContent');
