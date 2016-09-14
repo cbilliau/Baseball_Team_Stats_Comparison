@@ -2,17 +2,18 @@
 
 angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
-.config(function($mdIconProvider, $mdThemingProvider, $httpProvider) {
+.config(function($mdIconProvider, $mdThemingProvider, $httpProvider, $mdAriaProvider) {
     // $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     // define the icon names for shortcuts and icon locations
     $mdIconProvider
-        .defaultIconSet('./assets/svg/avatars.svg', 128)
+        .defaultIconSet('./assets/svg/logos.svg', 128)
         .icon('menu', './assets/svg/menu.svg', 24);
     // define theme pallete
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('red');
+    $mdAriaProvider.disableWarnings();
 })
 
 .factory('callAPI', function($http) {
