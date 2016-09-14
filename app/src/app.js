@@ -100,27 +100,26 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
 .service('statNameService', function() {
 
-      var statNames = [
-          'Wins',
-          'Losses',
-          'Balls',
-          'Hits',
-          'Runs',
-          'Singles',
-          'Doubles',
-          'Triples',
-          'RBI',
-          'ERA',
-          'Runs Allowed',
-          'Double Plays',
-          'Triple Plays'
-      ]
+    var statNames = {}
+    statNames.Wins = true;
+    statNames.Losses = true;
+    statNames.Balls = true;
+    statNames.Hits = true;
+    statNames.Runs = true;
+    statNames.Singles = true;
+    statNames.Doubles = true;
+    statNames.Triples = true;
+    statNames.RBI = true;
+    statNames.ERA = true;
+    statNames.RunsAllowed = true;
+    statNames.DoublePlays = true;
+    statNames.TriplePlays = true;
 
-      return {
-        getStatNames : function() {
-          return statNames;
+    return {
+        getStatNames: function() {
+            return statNames;
         }
-      }
+    }
 })
 
 .directive('appContainer', function(callAPI, generateStats, statNameService) {
@@ -130,8 +129,8 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         controllerAs: 'vm',
         controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
 
+            // Set var
             var vm = this;
-
             $scope.content = [];
             vm.statNames = statNameService.getStatNames();
             vm.dataTeams = [];
@@ -140,11 +139,13 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             vm.selectedAL = null;
             vm.selectedNl = null;
 
+            // Call api
             vm.getSetData = callAPI().success(function(results) {
                 vm.dataTeams = generateStats.iterateLeagueData(results);
                 vm.alTeamStats = vm.dataTeams[0].teams;
                 vm.nlTeamStats = vm.dataTeams[1].teams;
             });
+
 
             $scope.selectNlTeam = function(team) {
                 vm.selectedNl = team;
@@ -152,6 +153,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 if (sidenav.isOpen());
                 sidenav.close();
             };
+
 
             $scope.selectAlTeam = function(team) {
                 vm.selectedAl = team;
@@ -165,10 +167,9 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                     parent: angular.element(document.getElementById('wrapper')),
                     templateUrl: './src/views/toggleStatsSheet-template.html',
                     targetEvent: $event
-                }).then(function(checkbox) {
-                    console.log(checkbox.name + ' clicked!')
-                });
-            }
+                })
+            };
+
 
 
             // Bind child directives
@@ -217,19 +218,3 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         }
     }
 });
-
-// .directive('bottomSheet', function() {
-//     return {
-//         require: '^appContainer',
-//         restrict: 'A',
-//         link: function(scope, element, attrs, appContainerCtrl) {
-//             appContainerCtrl.addBottomSheet();
-//         },
-//         controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
-//
-//         var vm = this;
-//         console.log(vm.statNames);
-//
-//         }
-//     }
-// })

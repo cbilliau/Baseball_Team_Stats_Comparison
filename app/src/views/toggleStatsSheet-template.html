@@ -3,13 +3,53 @@
         Choose Stats to Display
     </md-subheader>
 
-    <div flex="100" flex-gt-sm="15" layout="column">
+    <div flex="100" flex-gt-sm="50" layout="column">
         <div>
+            <!--
+            In IE, we cannot apply flex directly to <fieldset>
+            @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+          -->
             <fieldset class="standard">
                 <div layout="row" layout-wrap flex>
-                    <div flex="100" ng-repeat="item in vm.statNames">
-                        <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                            {{ item }}
+                    <div flex="50">
+                        <md-checkbox ng-model="vm.statNames.Wins" aria-label="Checkbox 1">
+                            Wins
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Losses" aria-label="Checkbox 1">
+                            Losses
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Balls" aria-label="Checkbox 1">
+                            Balls
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Hits" aria-label="Checkbox 1">
+                            Hits
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Runs" aria-label="Checkbox 1">
+                            Runs
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Singles" aria-label="Checkbox 1">
+                            Singles
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Doubles" aria-label="Checkbox 1">
+                            Doubles
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.Triples" aria-label="Checkbox 1">
+                            Triples
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.RBI" aria-label="Checkbox 1">
+                            RBI
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.ERA" aria-label="Checkbox 1">
+                            ERA
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.RunsAllowed" aria-label="Checkbox 1">
+                            Runs Allowed
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.DoublePlays" aria-label="Checkbox 1">
+                            Double Plays
+                        </md-checkbox>
+                        <md-checkbox ng-model="vm.statNames.TriplePlays" aria-label="Checkbox 1">
+                            Triple Plays
                         </md-checkbox>
                     </div>
                 </div>
