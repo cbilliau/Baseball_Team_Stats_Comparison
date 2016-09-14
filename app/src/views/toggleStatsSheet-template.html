@@ -3,15 +3,15 @@
         Choose Stats to Display
     </md-subheader>
 
-    <div flex="100" flex-gt-sm="50" layout="column">
+    <!-- <div flex="100" flex-gt-sm="50" layout="column"> -->
         <div>
             <!--
             In IE, we cannot apply flex directly to <fieldset>
             @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
           -->
             <fieldset class="standard">
-                <div layout="row" layout-wrap flex>
-                    <div flex="50">
+                <div layout="row" layout-wrap layout-align="center center" flex>
+                    <!-- <div flex="50"> -->
                         <md-checkbox ng-model="vm.statNames.Wins" aria-label="Checkbox 1">
                             Wins
                         </md-checkbox>
@@ -51,10 +51,10 @@
                         <md-checkbox ng-model="vm.statNames.TriplePlays" aria-label="Checkbox 1">
                             Triple Plays
                         </md-checkbox>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </fieldset>
         </div>
-    </div>
+    <!-- </div> -->
 
 </md-bottom-sheet>

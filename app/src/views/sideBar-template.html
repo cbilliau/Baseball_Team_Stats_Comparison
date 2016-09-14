@@ -1,13 +1,15 @@
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
 
-    <!-- TOol bar-->
+    <!-- Tool bar-->
     <md-toolbar layout-padding>
         <h1>Teams</h1>
     </md-toolbar>
 
     <!-- Top section -->
-    <md-content md-whiteframe="4" layout-padding>
-      <h3>National League</h3>
+    <div>
+        <h3>National League</h3>
+    </div>
+    <md-content layout-padding>
         <md-list>
             <md-list-item ng-repeat="team in vm.nlTeamStats">
                 <md-button ng-click="selectNlTeam(team)" ng-class="{ 'selected': team === selected }">
@@ -18,8 +20,10 @@
         </md-content>
 
         <!-- Bottom section -->
-        <md-content md-whiteframe="4" layout-padding>
-          <h3>American League</h3>
+        <div >
+            <h3>American League</h3>
+        </div>
+        <md-content layout-padding>
             <md-list>
                 <md-list-item ng-repeat="team in vm.alTeamStats">
                     <md-button ng-click="selectAlTeam(team)" ng-class="{ 'selected': team === selected }">
