@@ -49,6 +49,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             obj.teams.push({
                 city: team.name,
                 team: team.nickname,
+                avatar: 'a',
                 wins: team_stats.wins,
                 losses: team_stats.losses,
                 balls: team_stats.balls,
@@ -144,6 +145,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             vm.getSetData = callAPI().success(function(results) {
                 vm.dataTeams = generateStats.iterateLeagueData(results);
                 vm.alTeamStats = vm.dataTeams[0].teams;
+                console.log(vm.dataTeams);
                 vm.nlTeamStats = vm.dataTeams[1].teams;
             });
 
