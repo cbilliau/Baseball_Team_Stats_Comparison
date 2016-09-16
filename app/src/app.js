@@ -169,23 +169,11 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 $mdBottomSheet.show({
                     parent: angular.element(document.getElementById('wrapper')),
                     templateUrl: './src/views/toggleStatsSheet-template.html',
-                    targetEvent: $event
+                    targetEvent: $event,
+                    link: function(scope, element, attrs) {
+                      $scope.content.push('bottomSheet');
+                    }
                 })
-            };
-
-
-
-            // Bind child directives
-            vm.addMainContent = function() {
-                $scope.content.push('mainContent');
-            };
-
-            vm.addSideBar = function() {
-                $scope.content.push('sideBar');
-            };
-
-            vm.addBottomSheet = function() {
-                $scope.content.push('bottomSheet');
             };
         }
     }
@@ -196,11 +184,10 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         require: '^appContainer',
         restrict: 'A',
         templateUrl: './src/views/mainContent-template.html',
-        link: function(scope, element, attrs, appContainerCtrl) {
-            appContainerCtrl.addMainContent();
+        link: function($scope, element, attrs, appContainerCtrl) {
+          $scope.content.push('mainContent');
         },
         controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
-
             $scope.toggleSideNav = function() {
                 $mdSidenav('left').toggle();
             };
@@ -213,8 +200,8 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         require: '^appContainer',
         restrict: 'A',
         templateUrl: './src/views/sideBar-template.html',
-        link: function(scope, element, attrs, appContainerCtrl) {
-            appContainerCtrl.addSideBar();
+        link: function($scope, element, attrs, appContainerCtrl) {
+          $scope.content.push('sideBar');
         },
         controller: function controller($scope, $element, $attrs, $timeout) {
 
