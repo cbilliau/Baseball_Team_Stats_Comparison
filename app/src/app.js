@@ -49,7 +49,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             obj.teams.push({
                 city: team.name,
                 team: team.nickname,
-                avatar: 'a',
+                avatar: team.nickname,
                 wins: team_stats.wins,
                 losses: team_stats.losses,
                 balls: team_stats.balls,
