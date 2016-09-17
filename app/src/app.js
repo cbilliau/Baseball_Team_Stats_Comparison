@@ -1,4 +1,4 @@
-'use strict'
+
 
 angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
@@ -41,57 +41,67 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         teams: []
     };
 
+    function pushToObject(team, team_stats) {
+
+        var teamData = {
+            city: team.name,
+            team: team.nickname,
+            avatar: team.nickname,
+            wins: team_stats.wins,
+            losses: team_stats.losses,
+            balls: team_stats.balls,
+            hits: team_stats.hits,
+            runs: team_stats.runs,
+            singles: team_stats.singles,
+            doubles: team_stats.doubles,
+            triples: team_stats.triples,
+            rbis: team_stats.rbi,
+            era: team_stats.era,
+            runs_allowed: team_stats.runs_allowed,
+            double_plays: team_stats.double_plays,
+            triple_plays: team_stats.triple_plays,
+        }
+
+        if (team.league === 'al') {
+          alData.teams.push(teamData);
+        } else {
+          nlData.teams.push(teamData);
+        }
+    }
+
+    function classifyTeam(team, teamStats) {
+      if (
+          team.id === teamStats.team_id &&
+          team.division_id === alEastDivisionId ||
+          team.division_id === alWestDivisionId ||
+          team.division_id === alCentralDivisionId
+      ) {
+          team.league = 'al';
+          // American League Push
+          pushToObject(team, teamStats);
+      } else {
+          team.league = 'nl';
+          // National League Push
+          pushToObject(team, teamStats);
+      }
+
+    }
+
     return {
-
-        // Push data into team stats objects
-        pushToObject: function(obj, team, team_stats) {
-
-            obj.teams.push({
-                city: team.name,
-                team: team.nickname,
-                avatar: team.nickname,
-                wins: team_stats.wins,
-                losses: team_stats.losses,
-                balls: team_stats.balls,
-                hits: team_stats.hits,
-                runs: team_stats.runs,
-                singles: team_stats.singles,
-                doubles: team_stats.doubles,
-                triples: team_stats.triples,
-                rbis: team_stats.rbi,
-                era: team_stats.era,
-                runs_allowed: team_stats.runs_allowed,
-                double_plays: team_stats.double_plays,
-                triple_plays: team_stats.triple_plays,
-            })
-        },
-
-        // Iterate of api data
         iterateLeagueData: function(data) {
 
-            var alConfernceId = data.divisions[0].conference_id;
-            var nlConferenceId = data.divisions[1].conference_id;
-            var alEastDivisionId = data.divisions[0].id;
-            var nlEastDivisionId = data.divisions[1].id;
-            var nlWestDivisionId = data.divisions[2].id;
-            var alWestDivisionId = data.divisions[3].id;
-            var nlCentralDivisionId = data.divisions[4].id;
-            var alCentralDivisionId = data.divisions[5].id;
+            alConfernceId = data.divisions[0].conference_id;
+            nlConferenceId = data.divisions[1].conference_id;
+            alEastDivisionId = data.divisions[0].id;
+            nlEastDivisionId = data.divisions[1].id;
+            nlWestDivisionId = data.divisions[2].id;
+            alWestDivisionId = data.divisions[3].id;
+            nlCentralDivisionId = data.divisions[4].id;
+            alCentralDivisionId = data.divisions[5].id;
 
             // iterate through data to sort by teams and then send to push func to be pushed into conference array
             for (var i = 0; i < data.teams.length; i++) {
-                if (
-                    data.teams[i].id === data.team_season_stats[i].team_id &&
-                    data.teams[i].division_id === alEastDivisionId ||
-                    data.teams[i].division_id === alWestDivisionId ||
-                    data.teams[i].division_id === alCentralDivisionId
-                ) {
-                    // American League Push
-                    this.pushToObject(alData, data.teams[i], data.team_season_stats[i]);
-                } else {
-                    // National League Push
-                    this.pushToObject(nlData, data.teams[i], data.team_season_stats[i]);
-                }
+                classifyTeam(data.teams[i], data.team_season_stats[i]);
             }
 
             return [alData, nlData];
