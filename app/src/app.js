@@ -3,7 +3,7 @@
 angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
 .config(function($mdIconProvider, $mdThemingProvider, $httpProvider, $mdAriaProvider) {
-    // $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     // define the icon names for shortcuts and icon locations
     $mdIconProvider
@@ -94,7 +94,6 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 }
             }
 
-            // Return objects containing teams and their stats
             return [alData, nlData];
         }
     }
@@ -135,35 +134,14 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             var vm = this;
             $scope.content = [];
             $scope.statNames = statNameService.getStatNames();
-            // vm.dataTeams = [];
-            // vm.nlTeamStats = [];
-            // vm.alTeamStats = [];
-            // vm.selectedAL = null;
-            // vm.selectedNl = null;
 
             // Call api
             vm.getSetData = callAPI().success(function(results) {
                 $scope.dataTeams = generateStats.iterateLeagueData(results);
-                $scope.alTeamStats = $scope.dataTeams[0].teams;
                 console.log($scope.dataTeams);
+                $scope.alTeamStats = $scope.dataTeams[0].teams;
                 $scope.nlTeamStats = $scope.dataTeams[1].teams;
             });
-
-
-            // $scope.selectNlTeam = function(team) {
-            //     vm.selectedNl = team;
-            //     var sidenav = $mdSidenav('left');
-            //     if (sidenav.isOpen());
-            //     sidenav.close();
-            // };
-            //
-            //
-            // $scope.selectAlTeam = function(team) {
-            //     vm.selectedAl = team;
-            //     var sidenav = $mdSidenav('left');
-            //     // if (sidenav.isOpen());
-            //     sidenav.close();
-            // };
 
             $scope.showToggleStatsSheet = function($event) {
                 $mdBottomSheet.show({
@@ -171,7 +149,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                     templateUrl: './src/views/toggleStatsSheet-template.html',
                     targetEvent: $event,
                     link: function(scope, element, attrs) {
-                      $scope.content.push('bottomSheet');
+                        $scope.content.push('bottomSheet');
                     }
                 })
             };
@@ -185,7 +163,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         restrict: 'A',
         templateUrl: './src/views/mainContent-template.html',
         link: function($scope, element, attrs, appContainerCtrl) {
-          $scope.content.push('mainContent');
+            $scope.content.push('mainContent');
         },
         controller: function controller($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
             $scope.toggleSideNav = function() {
@@ -201,26 +179,23 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         restrict: 'A',
         templateUrl: './src/views/sideBar-template.html',
         link: function($scope, element, attrs) {
-          $scope.content.push('sideBar');
+            $scope.content.push('sideBar');
         },
         controller: function controller($scope, $element, $attrs, $timeout, $mdSidenav) {
 
-          var vm =this;
+            $scope.selectNlTeam = function(team) {
+                $scope.selectedNl = team;
+                var sidenav = $mdSidenav('left');
+                if (sidenav.isOpen());
+                sidenav.close();
+            };
 
-          $scope.selectNlTeam = function(team) {
-              $scope.selectedNl = team;
-              var sidenav = $mdSidenav('left');
-              if (sidenav.isOpen());
-              sidenav.close();
-          };
-
-
-          $scope.selectAlTeam = function(team) {
-              $scope.selectedAl = team;
-              var sidenav = $mdSidenav('left');
-              // if (sidenav.isOpen());
-              sidenav.close();
-          };
+            $scope.selectAlTeam = function(team) {
+                $scope.selectedAl = team;
+                var sidenav = $mdSidenav('left');
+                if (sidenav.isOpen());
+                sidenav.close();
+            };
 
         }
     }
