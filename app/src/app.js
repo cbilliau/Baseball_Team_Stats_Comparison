@@ -134,7 +134,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
             // Set var
             var vm = this;
             $scope.content = [];
-            vm.statNames = statNameService.getStatNames();
+            $scope.statNames = statNameService.getStatNames();
             // vm.dataTeams = [];
             // vm.nlTeamStats = [];
             // vm.alTeamStats = [];
