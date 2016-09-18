@@ -20,7 +20,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
         return $http({
             method: 'GET',
-            url: 'https://api.stattleship.com/baseball/mlb/team_season_stats',
+            url: 'https://api.stattleship.com/baseball/mlb/team_season_stats?season_id=mlb-2016&on=today&interval_type=regularseason',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token token=031488b51ba97cd59d3934f56f21c355',
@@ -76,9 +76,9 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
         if (
             team.id === teamStats.team_id &&
-            team.division_id === alEastDivisionId ||
-            team.division_id === alWestDivisionId ||
-            team.division_id === alCentralDivisionId
+            team.division_id === nlEastDivisionId ||
+            team.division_id === nlWestDivisionId ||
+            team.division_id === nlCentralDivisionId
         ) {
             team.league = 'al';
             // American League Push
@@ -150,6 +150,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
             // Call api
             $scope.getSetData = callAPI().success(function(results) {
+                console.log(results);
                 $scope.dataTeams = generateStats.iterateLeagueData(results);
                 $scope.alTeamStats = $scope.dataTeams[0].teams;
                 $scope.nlTeamStats = $scope.dataTeams[1].teams;
