@@ -2,14 +2,6 @@
 
 This app allows a user to compare the current year statistics between one National League and one American League team.
 
-### To Be Determined:
-
-1. Statistics to be compared and displayed.
-2. Mechanism for choosing which statistics to display.
-3. If additional info (news, links, etc...) should/will be displayed for each team.
-
-...
-
 
 ## Getting Started
 

@@ -23,26 +23,13 @@ md-list .md-button {
   text-align: left;
   width: 100%;
 }
+
 md-list .md-button.selected {
     color: #03a9f4;
 }
 
 md-sidenav  md-list {
   padding: 0px 0px 8px 0px;
-}
-
-#content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
-#contentArea {
-  padding: 0;
-}
-
-#content md-icon.avatar {
-  margin-top: 10px;
 }
 
 .avatar {
@@ -72,10 +59,4 @@ md-sidenav  md-list {
 
 md-bottom-sheet  md-icon {
   margin-right:20px;
-}
-
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
 }
