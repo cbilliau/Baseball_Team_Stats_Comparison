@@ -7,47 +7,18 @@ This app allows a user to compare the current year statistics between one Nation
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisities
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you have to get a development env running.
 
-Stay what the step will be
+1. Clone from https://github.com/cbilliau/Baseball_Team_Stats_Comparison
 
-```
-Give the example
-```
+2. Then cd into the project directory and run npm install.
 
-And repeat
+3. Then `bower install`.
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* Dropwizard - Bla bla bla
-* Maven - Maybe
-* Atom - ergaerga
+4. Open a browser at localhost:8080.
 
 
 ## License
@@ -56,6 +27,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* https://erikberg.com/api
-* Inspiration
-* etc
+* https://stattleship.com
