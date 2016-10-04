@@ -14,11 +14,13 @@ A step by step series of examples that tell you have to get a development env ru
 
 1. Clone from https://github.com/cbilliau/Baseball_Team_Stats_Comparison
 
-2. Then cd into the project directory and run npm install.
+2. Then cd into the project directory and run 'npm install'.
 
 3. Then `bower install`.
 
-4. Open a browser at localhost:8080.
+4. Move into app dir and start a local server.
+
+5. Open a browser at localhost:8080.
 
 
 ## License
