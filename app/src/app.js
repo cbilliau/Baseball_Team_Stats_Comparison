@@ -20,7 +20,9 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
         return $http({
             method: 'GET',
-            url: 'https://api.stattleship.com/baseball/mlb/team_season_stats?season_id=mlb-2016&on=today&interval_type=regularseason',
+            url: 'https://api.stattleship.com/baseball/mlb/team_season_stats?season_id=mlb-2016&interval_type=regularseason',
+            // adding n=today& after 'mlb-2016' will work ony during reg season
+            // change season_id to year needed. Look at adding this to eventual dropdown menu item
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token token=031488b51ba97cd59d3934f56f21c355',
