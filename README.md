@@ -1,6 +1,6 @@
-# Baseball Statistics Comparisons
+# Baseball Statistics Comparisons Regular Season 2016
 
-This app allows a user to compare the current year statistics between one National League and one American League team.
+This app allows a user to compare the current year statistics between one National League and one American League team for the 2016 regular season.
 
 
 ## Getting Started
