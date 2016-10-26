@@ -8,8 +8,8 @@
     <md-fab-speed-dial class="md-fab-top-right">
         <md-fab-trigger>
             <md-button class="md-fab" ng-click="showToggleStatsSheet($event)">
-                <md-icon md-svg-icon="menu"></md-icon>
-                <md-tooltip md-direction="left">Choose Stats to compare</md-tooltip>
+                <md-icon md-svg-icon="filter"></md-icon>
+                <md-tooltip md-direction="left" style="font-size: 1em">Choose Stats to compare</md-tooltip>
             </md-button>
         </md-fab-trigger>
     </md-fab-speed-dial>
@@ -17,295 +17,263 @@
 
 <div class="layout-row flex" layout="row">
 
+    <!-- National League Stats -->
     <md-content flex>
         <md-list flex>
             <md-list-item>
                 <div>
                     <span class="md-title">
-                        Team -
+                        National League Team -
                     </span>
                     <span class="md-subhead">
                         {{ selectedNl.team }}
                     </span>
                 </div>
+                <md-divider></md-divider>
             </md-list-item>
-            <!-- <md-list-item ng-show="statNames.Wins">
-                <div>
-                    <span class="md-title">
-                        Wins -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.wins }}
-                    </span>
-                </span>
+
+            <div ng-show="showNlStats">
+                <md-list-item ng-show="statNames.Losses">
+                    <div>
+                        <span class="md-title">
+                            Losses -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.losses }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Balls">
+                    <div>
+                        <span class="md-title">
+                            Balls -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.balls }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Hits">
+                    <div>
+                        <span class="md-title">
+                            Hits -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.hits }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Runs">
+                    <div>
+                        <span class="md-title">
+                            Runs -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.runs }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Singles">
+                    <div>
+                        <span class="md-title">
+                            Singles -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.singles }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Doubles">
+                    <div>
+                        <span class="md-title">
+                            Doubles -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.doubles }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Triples">
+                    <div>
+                        <span class="md-title">
+                            Triples -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.triples }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.RBI">
+                    <div>
+                        <span class="md-title">
+                            RBI -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.rbis}}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.ERA">
+                    <div>
+                        <span class="md-title">
+                            ERA -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.era }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.RunsAllowed">
+                    <div>
+                        <span class="md-title">
+                            Runs Allowed -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.runs_allowed }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.DoublePlays">
+                    <div>
+                        <span class="md-title">
+                            Double Plays -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedNl.double_plays }}
+                        </span>
+                    </div>
+                </md-list-item>
             </div>
-        </md-list-item> -->
-            <md-list-item ng-show="statNames.Losses">
-                <div>
-                    <span class="md-title">
-                        Losses -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.losses }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Balls">
-                <div>
-                    <span class="md-title">
-                        Balls -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.balls }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Hits">
-                <div>
-                    <span class="md-title">
-                        Hits -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.hits }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Runs">
-                <div>
-                    <span class="md-title">
-                        Runs -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.runs }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Singles">
-                <div>
-                    <span class="md-title">
-                        Singles -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.singles }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Doubles">
-                <div>
-                    <span class="md-title">
-                        Doubles -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.doubles }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Triples">
-                <div>
-                    <span class="md-title">
-                        Triples -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.triples }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.RBI">
-                <div>
-                    <span class="md-title">
-                        RBI -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.rbis}}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.ERA">
-                <div>
-                    <span class="md-title">
-                        ERA -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.era }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.RunsAllowed">
-                <div>
-                    <span class="md-title">
-                        Runs Allowed -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.runs_allowed }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.DoublePlays">
-                <div>
-                    <span class="md-title">
-                        Double Plays -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.double_plays }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.TriplePlays">
-                <div>
-                    <span class="md-title">
-                        Triple Plays -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedNl.triple_plays }}
-                    </span>
-                </div>
-            </md-list-item>
         </md-list>
     </md-content>
 
+    <!-- American Leage Stats -->
     <md-content flex>
         <md-list flex>
             <md-list-item>
                 <div>
                     <span class="md-title">
-                        Team -
+                        American League Team -
                     </span>
                     <span class="md-subhead">
                         {{ selectedAl.team }}
                     </span>
                 </div>
+                <md-divider></md-divider>
             </md-list-item>
-            <!-- <md-list-item ng-show="statNames.Wins">
-            <div>
-                <span class="md-title">
-                    Wins -
-                </span>
-                <span class="md-subhead">
-                    {{ selectedAl.wins }}
-                </span>
-            </span>
-        </div>
-    </md-list-item> -->
-            <md-list-item ng-show="statNames.Losses">
-                <div>
-                    <span class="md-title">
-                        Losses -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.losses }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Balls">
-                <div>
-                    <span class="md-title">
-                        Balls -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.balls }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Hits">
-                <div>
-                    <span class="md-title">
-                        Hits -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.hits }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Runs">
-                <div>
-                    <span class="md-title">
-                        Runs -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.runs }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Singles">
-                <div>
-                    <span class="md-title">
-                        Singles -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.singles }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Doubles">
-                <div>
-                    <span class="md-title">
-                        Doubles -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.doubles }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.Triples">
-                <div>
-                    <span class="md-title">
-                        Triples -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.triples }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.RBI">
-                <div>
-                    <span class="md-title">
-                        RBI -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.rbis}}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.ERA">
-                <div>
-                    <span class="md-title">
-                        ERA -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.era }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.RunsAllowed">
-                <div>
-                    <span class="md-title">
-                        Runs Allowed -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.runs_allowed }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.DoublePlays">
-                <div>
-                    <span class="md-title">
-                        Double Plays -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.double_plays }}
-                    </span>
-                </div>
-            </md-list-item>
-            <md-list-item ng-show="statNames.TriplePlays">
-                <div>
-                    <span class="md-title">
-                        Triple Plays -
-                    </span>
-                    <span class="md-subhead">
-                        {{ selectedAl.triple_plays }}
-                    </span>
-                </div>
-            </md-list-item>
+
+            <div ng-show="showAlStats">
+                <md-list-item ng-show="statNames.Losses">
+                    <div>
+                        <span class="md-title">
+                            Losses -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.losses }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Balls">
+                    <div>
+                        <span class="md-title">
+                            Balls -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.balls }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Hits">
+                    <div>
+                        <span class="md-title">
+                            Hits -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.hits }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Runs">
+                    <div>
+                        <span class="md-title">
+                            Runs -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.runs }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Singles">
+                    <div>
+                        <span class="md-title">
+                            Singles -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.singles }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Doubles">
+                    <div>
+                        <span class="md-title">
+                            Doubles -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.doubles }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.Triples">
+                    <div>
+                        <span class="md-title">
+                            Triples -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.triples }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.RBI">
+                    <div>
+                        <span class="md-title">
+                            RBI -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.rbis}}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.ERA">
+                    <div>
+                        <span class="md-title">
+                            ERA -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.era }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.RunsAllowed">
+                    <div>
+                        <span class="md-title">
+                            Runs Allowed -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.runs_allowed }}
+                        </span>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-show="statNames.DoublePlays">
+                    <div>
+                        <span class="md-title">
+                            Double Plays -
+                        </span>
+                        <span class="md-subhead">
+                            {{ selectedAl.double_plays }}
+                        </span>
+                    </div>
+                </md-list-item>
+            </div>
         </md-list>
     </md-content>
 </div>

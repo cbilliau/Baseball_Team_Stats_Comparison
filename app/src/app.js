@@ -6,6 +6,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     // define the icon names for shortcuts and icon locations
     $mdIconProvider
         .defaultIconSet('./assets/svg/logos.svg', 128)
+        .icon('filter', './assets/svg/filter.svg', 24)
         .icon('menu', './assets/svg/menu.svg', 24);
     // define theme pallete
     $mdThemingProvider.theme('default')
@@ -148,11 +149,12 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
 
             // Set var
             $scope.content = [];
+            $scope.showNlStats = false;
+            $scope.showAlStats = false;
             $scope.statNames = statNameService.getStatNames();
 
             // Call api
             $scope.getSetData = callAPI().success(function(results) {
-                console.log(results);
                 $scope.dataTeams = generateStats.iterateLeagueData(results);
                 $scope.alTeamStats = $scope.dataTeams[0].teams;
                 $scope.nlTeamStats = $scope.dataTeams[1].teams;
@@ -201,17 +203,16 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
         controller: function controller($scope, $element, $attrs, $timeout, $mdSidenav) {
 
             $scope.selectNlTeam = function(team) {
-
                 $scope.selectedNl = team;
-                console.log('avatar name ' + team.avatar);
+                $scope.showNlStats = true;
                 var sidenav = $mdSidenav('left');
                 if (sidenav.isOpen());
                 sidenav.close();
             };
 
             $scope.selectAlTeam = function(team) {
-                console.log('avatar name ' + team.avatar);
                 $scope.selectedAl = team;
+                $scope.showAlStats = true;
                 var sidenav = $mdSidenav('left');
                 if (sidenav.isOpen());
                 sidenav.close();
