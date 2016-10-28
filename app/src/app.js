@@ -145,7 +145,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     return {
         replace: false,
         restrict: 'E',
-        controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
+        controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet, $mdDialog) {
 
             // Set var
             $scope.content = [];
@@ -159,6 +159,18 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 $scope.alTeamStats = $scope.dataTeams[0].teams;
                 $scope.nlTeamStats = $scope.dataTeams[1].teams;
             });
+
+            $scope.showModal = function () {
+              console.log('modal');
+              $mdDialog.show(
+                $mdDialog.alert()
+                  .clickOutsideToClose(true)
+                  .title('Instructions')
+                  .textContent('Choose one NL and one AL team from the roster on the left to compare team stats. Click the filter fab to show/hide stats.')
+                  .ariaLabel('Alert Dialog')
+                  .ok('Got it!')
+              );
+            };
 
             $scope.showToggleStatsSheet = function($event) {
                 $mdBottomSheet.show({
