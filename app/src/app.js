@@ -145,7 +145,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
     return {
         replace: false,
         restrict: 'E',
-        controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet) {
+        controller: function($scope, $element, $attrs, $mdSidenav, $mdBottomSheet, $mdDialog) {
 
             // Set var
             $scope.content = [];
@@ -160,6 +160,7 @@ angular.module('baseballStatsApp', ['ngMaterial', 'ngMdIcons'])
                 $scope.nlTeamStats = $scope.dataTeams[1].teams;
             });
 
+            // Instructions modal
             $scope.showModal = function () {
               $mdDialog.show(
                 $mdDialog.alert()
